@@ -43,7 +43,6 @@ jobs:
         run: |
           echo Deploying to DEV...
           pm2 delete greetings-app-dev & EXIT /B 0
-          if (not exist) venv python -m venv venv
           venv\Scripts\python -m pip install -r requirements.txt
           pm2 start app.py --name greetings-app-dev --interpreter venv\Scripts\python -- --port 7001
 
