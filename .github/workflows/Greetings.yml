@@ -21,6 +21,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: app
+        shell: cmd
         run: |
           echo Installing dependencies...
           python -m venv venv
@@ -40,6 +41,7 @@ jobs:
 
       - name: Deploy DEV
         working-directory: app
+        shell: cmd
         run: |
           echo Deploying to DEV...
           pm2 delete greetings-app-dev || ver > nul
@@ -61,6 +63,7 @@ jobs:
 
       - name: Run tests DEV
         working-directory: tests
+        shell: cmd
         run: |
           echo Running tests on DEV...
           npm install
@@ -80,6 +83,7 @@ jobs:
 
       - name: Deploy STG
         working-directory: app
+        shell: cmd
         run: |
           echo Deploying to STG...
           pm2 delete greetings-app-dev & set "errorlevel=0"
@@ -102,6 +106,7 @@ jobs:
 
       - name: Run tests STG
         working-directory: tests
+        shell: cmd
         run: |
           echo Running tests on STG...
           npm install
@@ -121,6 +126,7 @@ jobs:
 
       - name: Deploy PREPROD
         working-directory: app
+        shell: cmd
         run: |
           echo Deploying to PREPROD...
           pm2 delete greetings-app-dev & set "errorlevel=0"
@@ -142,6 +148,7 @@ jobs:
 
       - name: Run tests PREPROD
         working-directory: tests
+        shell: cmd
         run: |
           echo Running tests on PREPROD...
           npm install
@@ -161,6 +168,7 @@ jobs:
 
       - name: Deploy PROD
         working-directory: app
+        shell: cmd
         run: |
           echo Deploying to PROD...
           pm2 delete greetings-app-dev & set "errorlevel=0"
@@ -183,6 +191,7 @@ jobs:
 
       - name: Run tests PROD
         working-directory: tests
+        shell: cmd
         run: |
           echo Running tests on PROD...
           npm install
