@@ -45,7 +45,8 @@ jobs:
           pm2 delete greetings-app-dev & set "errorlevel=0"
           python -m venv venv
           .\venv\Scripts\python -m pip install -r requirements.txt
-          pm2 start app.py --name greetings-app-dev --interpreter venv\Scripts\python -- --port 7001
+          set PORT=7001
+          pm2 start app.py --name greetings-app-dev --interpreter .\venv\Scripts\python
 
   tests-on-dev:
     runs-on: self-hosted
@@ -85,7 +86,8 @@ jobs:
           pm2 delete greetings-app-dev & set "errorlevel=0"
           python -m venv venv
           .\venv\Scripts\python -m pip install -r requirements.txt
-          pm2 start app.py --name greetings-app-stg --interpreter venv\Scripts\python -- --port 7002
+          set PORT=7002
+          pm2 start app.py --name greetings-app-dev --interpreter .\venv\Scripts\python
 
   tests-on-stg:
     runs-on: self-hosted
@@ -124,8 +126,8 @@ jobs:
           echo Deploying to PREPROD...
           pm2 delete greetings-app-dev & set "errorlevel=0"
           python -m venv venv
-          .\venv\Scripts\python -m pip install -r requirements.txt
-          pm2 start app.py --name greetings-app-preprod --interpreter venv\Scripts\python -- --port 7003
+          set PORT=7003
+          pm2 start app.py --name greetings-app-dev --interpreter .\venv\Scripts\python
 
   tests-on-preprod:
     runs-on: self-hosted
@@ -165,7 +167,8 @@ jobs:
           pm2 delete greetings-app-dev & set "errorlevel=0"
           python -m venv venv
           .\venv\Scripts\python -m pip install -r requirements.txt
-          pm2 start app.py --name greetings-app-prod --interpreter venv\Scripts\python -- --port 7004
+          set PORT=7004
+          pm2 start app.py --name greetings-app-dev --interpreter .\venv\Scripts\python
 
   tests-on-prod:
     runs-on: self-hosted
