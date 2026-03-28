@@ -43,6 +43,7 @@ jobs:
         run: |
           echo Deploying to DEV...
           pm2 delete greetings-app-dev & set "errorlevel=0"
+          python -m venv venv
           .\venv\Scripts\python -m pip install -r requirements.txt
           pm2 start app.py --name greetings-app-dev --interpreter venv\Scripts\python -- --port 7001
 
@@ -82,6 +83,7 @@ jobs:
         run: |
           echo Deploying to STG...
           pm2 delete greetings-app-dev & set "errorlevel=0"
+          python -m venv venv
           .\venv\Scripts\python -m pip install -r requirements.txt
           pm2 start app.py --name greetings-app-stg --interpreter venv\Scripts\python -- --port 7002
 
@@ -121,6 +123,7 @@ jobs:
         run: |
           echo Deploying to PREPROD...
           pm2 delete greetings-app-dev & set "errorlevel=0"
+          python -m venv venv
           .\venv\Scripts\python -m pip install -r requirements.txt
           pm2 start app.py --name greetings-app-preprod --interpreter venv\Scripts\python -- --port 7003
 
@@ -160,6 +163,7 @@ jobs:
         run: |
           echo Deploying to PROD...
           pm2 delete greetings-app-dev & set "errorlevel=0"
+          python -m venv venv
           .\venv\Scripts\python -m pip install -r requirements.txt
           pm2 start app.py --name greetings-app-prod --interpreter venv\Scripts\python -- --port 7004
 
